@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ampliacion.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="ampliacion-practica-1">Ampliacion Practica 1</h1>
+<blockquote>
+<p>[!WARNING]
+Esto es una extension a la practica 1.</p>
+</blockquote>
+<h3 id="point-1">POINT 1.</h3>
+<ul>
+<li>
+<h4 id="1-indexhtml"><code>1. INDEX.HTML</code></h4>
+</li>
+</ul>
+<p>El codigo que hemos hecho es el siguiente:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;es&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Página de Diego<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- Tipografía comercial Montserrat --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;preconnect&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://fonts.googleapis.com&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;preconnect&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://fonts.gstatic.com&quot;</span> <span class="hljs-attr">crossorigin</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;display=swap&quot;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;stylees.css&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- Sección de encabezados superiores --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;top-header&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;welcome-text&quot;</span>&gt;</span>Bienvenido a la pagina de Diego<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;main-title&quot;</span>&gt;</span>Ampliacion de HTML<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- Contenedor principal para la tarjeta de texto --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;main-content&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;card&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+        Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto...
+      <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Y asi queda:</p>
+<p><img src="IMG/index.png" alt="alt text"></p>
+<ul>
+<li>
+<h4 id="2-indexphp"><code>2. INDEX.PHP</code></h4>
+</li>
+</ul>
+<p>El codigo que hemos usado es el siguiente:</p>
+<pre class="hljs"><code><div>&lt;!DOCTYPE html&gt;
+&lt;html lang=<span class="hljs-string">&quot;es&quot;</span>&gt;
+&lt;head&gt;
+  &lt;meta charset=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;
+  &lt;meta name=<span class="hljs-string">&quot;viewport&quot;</span> content=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;
+  &lt;title&gt;Página de Diego&lt;/title&gt;
+
+  &lt;!-- Fuente comercial Montserrat --&gt;
+  &lt;link rel=<span class="hljs-string">&quot;preconnect&quot;</span> href=<span class="hljs-string">&quot;https://fonts.googleapis.com&quot;</span>&gt;
+  &lt;link rel=<span class="hljs-string">&quot;preconnect&quot;</span> href=<span class="hljs-string">&quot;https://fonts.gstatic.com&quot;</span> crossorigin&gt;
+  &lt;link href=<span class="hljs-string">&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&amp;display=swap&quot;</span> rel=<span class="hljs-string">&quot;stylesheet&quot;</span>&gt;
+
+  &lt;link rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;stylees.css&quot;</span>&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;!-- Sección de encabezados superiores --&gt;
+  &lt;header <span class="hljs-class"><span class="hljs-keyword">class</span>=&quot;<span class="hljs-title">top</span>-<span class="hljs-title">header</span>&quot;&gt;
+    &lt;<span class="hljs-title">p</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">welcome</span>-<span class="hljs-title">text</span>&quot;&gt;<span class="hljs-title">Bienvenido</span> <span class="hljs-title">a</span> <span class="hljs-title">la</span> <span class="hljs-title">conexion</span> <span class="hljs-title">a</span> <span class="hljs-title">la</span> <span class="hljs-title">BD</span> <span class="hljs-title">de</span> <span class="hljs-title">Diego</span>&lt;/<span class="hljs-title">p</span>&gt;
+    &lt;<span class="hljs-title">h1</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">main</span>-<span class="hljs-title">title</span>&quot;&gt;<span class="hljs-title">Conexion</span> <span class="hljs-title">a</span> <span class="hljs-title">tiendas_daw</span>...&lt;/<span class="hljs-title">h1</span>&gt;
+  &lt;/<span class="hljs-title">header</span>&gt;
+
+  &lt;!-- <span class="hljs-title">Contenedor</span> <span class="hljs-title">principal</span> --&gt;
+  &lt;<span class="hljs-title">main</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">main</span>-<span class="hljs-title">content</span>&quot;&gt;
+    &lt;<span class="hljs-title">div</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">card</span>&quot;&gt;
+      
+      &lt;!-- <span class="hljs-title">Contenido</span> <span class="hljs-title">dentro</span> <span class="hljs-title">del</span> <span class="hljs-title">div</span> --&gt;
+      &lt;<span class="hljs-title">div</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">div</span>-<span class="hljs-title">content</span>&quot;&gt;
+       	&lt;?<span class="hljs-title">php</span>
+		$<span class="hljs-title">servidor</span> = &quot;<span class="hljs-title">localhost</span>&quot;;
+		$<span class="hljs-title">usuario</span> = &quot;<span class="hljs-title">appuser</span>&quot;;
+		$<span class="hljs-title">contrasena</span> = &quot;<span class="hljs-title">Contrase</span>ñ<span class="hljs-title">aSegura2026</span>!&quot;;
+		$<span class="hljs-title">bd</span> = &quot;<span class="hljs-title">tiendas_daw</span>&quot;;
+
+		$<span class="hljs-title">conexion</span> = <span class="hljs-title">new</span> <span class="hljs-title">mysqli</span>($<span class="hljs-title">servidor</span>, $<span class="hljs-title">usuario</span>, $<span class="hljs-title">contrasena</span>, $<span class="hljs-title">bd</span>);
+
+		<span class="hljs-title">if</span>($<span class="hljs-title">conexion</span>-&gt;<span class="hljs-title">connect_error</span>)</span>{
+        		<span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Error de conexion: &quot;</span> . <span class="hljs-variable">$conexion</span>-&gt;connect_error);
+		}
+
+		<span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;h2&gt;Conexion establecida correctamente con la base de dato &#x27;<span class="hljs-subst">$bd</span>&#x27; &lt;/h2&gt;&quot;</span>;
+
+		<span class="hljs-variable">$conexion</span>-&gt;<span class="hljs-title function_ invoke__">close</span>();     
+	<span class="hljs-meta">?&gt;</span>
+
+      &lt;/div&gt;
+
+      &lt;!-- Botón alargado azul debajo del div --&gt;
+      &lt;button type=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-class"><span class="hljs-keyword">class</span>=&quot;<span class="hljs-title">btn</span>-<span class="hljs-title">enviar</span>&quot;&gt;<span class="hljs-title">Enviar</span>&lt;/<span class="hljs-title">button</span>&gt;
+
+      &lt;!-- <span class="hljs-title">Texto</span> <span class="hljs-title">largo</span> <span class="hljs-title">debajo</span> <span class="hljs-title">del</span> <span class="hljs-title">div</span> <span class="hljs-title">y</span> <span class="hljs-title">del</span> <span class="hljs-title">bot</span>ó<span class="hljs-title">n</span> --&gt;
+      &lt;<span class="hljs-title">p</span> <span class="hljs-title">class</span>=&quot;<span class="hljs-title">long</span>-<span class="hljs-title">text</span>&quot;&gt;
+        <span class="hljs-title">Lorem</span> <span class="hljs-title">ipsum</span> <span class="hljs-title">dolor</span> <span class="hljs-title">sit</span> <span class="hljs-title">amet</span>, <span class="hljs-title">consectetur</span> <span class="hljs-title">adipiscing</span> <span class="hljs-title">elit</span>. <span class="hljs-title">Sed</span> <span class="hljs-title">do</span> <span class="hljs-title">eiusmod</span> <span class="hljs-title">tempor</span> <span class="hljs-title">incididunt</span> <span class="hljs-title">ut</span> <span class="hljs-title">labore</span> <span class="hljs-title">et</span> <span class="hljs-title">dolore</span> <span class="hljs-title">magna</span> <span class="hljs-title">aliqua</span>. <span class="hljs-title">Ut</span> <span class="hljs-title">enim</span> <span class="hljs-title">ad</span> <span class="hljs-title">minim</span> <span class="hljs-title">veniam</span>, <span class="hljs-title">quis</span> <span class="hljs-title">nostrud</span> <span class="hljs-title">exercitation</span> <span class="hljs-title">ullamco</span> <span class="hljs-title">laboris</span> <span class="hljs-title">nisi</span> <span class="hljs-title">ut</span> <span class="hljs-title">aliquip</span> <span class="hljs-title">ex</span> <span class="hljs-title">ea</span> <span class="hljs-title">commodo</span> <span class="hljs-title">consequat</span>. <span class="hljs-title">Duis</span> <span class="hljs-title">aute</span> <span class="hljs-title">irure</span> <span class="hljs-title">dolor</span> <span class="hljs-title">in</span> <span class="hljs-title">reprehenderit</span> <span class="hljs-title">in</span> <span class="hljs-title">voluptate</span> <span class="hljs-title">velit</span> <span class="hljs-title">esse</span> <span class="hljs-title">cillum</span> <span class="hljs-title">dolore</span> <span class="hljs-title">eu</span> <span class="hljs-title">fugiat</span> <span class="hljs-title">nulla</span> <span class="hljs-title">pariatur</span>. <span class="hljs-title">Excepteur</span> <span class="hljs-title">sint</span> <span class="hljs-title">occaecat</span> <span class="hljs-title">cupidatat</span> <span class="hljs-title">non</span> <span class="hljs-title">proident</span>, <span class="hljs-title">sunt</span> <span class="hljs-title">in</span> <span class="hljs-title">culpa</span> <span class="hljs-title">qui</span> <span class="hljs-title">officia</span> <span class="hljs-title">deserunt</span> <span class="hljs-title">mollit</span> <span class="hljs-title">anim</span> <span class="hljs-title">id</span> <span class="hljs-title">est</span> <span class="hljs-title">laborum</span>.
+      &lt;/<span class="hljs-title">p</span>&gt;
+
+    &lt;/<span class="hljs-title">div</span>&gt;
+  &lt;/<span class="hljs-title">main</span>&gt;
+
+&lt;/<span class="hljs-title">body</span>&gt;
+&lt;/<span class="hljs-title">html</span>&gt;
+
+</span></div></code></pre>
+<p>y esto se ve asi:</p>
+<p><img src="IMG/conexion.png" alt="alt text"></p>
+<ul>
+<li>
+<h4 id="3-indexcss"><code>3. INDEX.CSS</code></h4>
+</li>
+</ul>
+<p>Este es el codigo que hemos usado para las dos paguinas:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">30px</span> <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f8f9fa</span>;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">font-family</span>: Arial, sans-serif;
+}
+
+<span class="hljs-comment">/* Estilos del encabezado superior */</span>
+<span class="hljs-selector-class">.top-header</span> {
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">30px</span>;
+}
+
+<span class="hljs-selector-class">.welcome-text</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Montserrat&#x27;</span>, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.2rem</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#555555</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-comment">/* Botón alargado azul */</span>
+<span class="hljs-selector-class">.btn-enviar</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">14px</span> <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#0066ff</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Montserrat&#x27;</span>, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">600</span>;
+  <span class="hljs-attribute">border</span>: none;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">transition</span>: background-color <span class="hljs-number">0.2s</span> ease, transform <span class="hljs-number">0.1s</span> ease;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">25px</span>;
+}
+
+<span class="hljs-selector-class">.btn-enviar</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#0052cc</span>;
+}
+
+<span class="hljs-selector-class">.btn-enviar</span><span class="hljs-selector-pseudo">:active</span> {
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(<span class="hljs-number">0.99</span>);
+}
+
+<span class="hljs-comment">/* Texto largo inferior */</span>
+<span class="hljs-selector-class">.long-text</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#4a5568</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.7</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.95rem</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+
+
+
+
+<span class="hljs-selector-class">.main-title</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;Montserrat&#x27;</span>, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2.2rem</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">800</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#111111</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">text-transform</span>: uppercase;
+  <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.5px</span>;
+}
+
+<span class="hljs-comment">/* Estilos de la tarjeta con sombra */</span>
+<span class="hljs-selector-class">.main-content</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>;
+}
+
+<span class="hljs-selector-class">.card</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">30px</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">10px</span> <span class="hljs-number">30px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.08</span>);
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#4a5568</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.6</span>;
+}
+</div></code></pre>
+<h3 id="point-2">POINT 2.</h3>
+<p>Comandos a ejecutar:</p>
+<blockquote>
+<ul>
+<li>CREATE USER 'diegoLectura'@'10.2.24.111' IDENTIFIED BY 'diegoLectura123!';</li>
+<li>GRANT SELECT ON tiendas_daw.* TO 'diegoLectura'@'10.2.24.111';</li>
+</ul>
+</blockquote>
+<p>Una vez hacemos esos <strong>comandos</strong> tenemos que modificar en el archivo de configuracion de <strong>MYSQL</strong> la siguiente linea llamada <strong>BIND</strong>:
+<img src="IMG/BIND.png" alt="alt text"></p>
+<p>Y reiniciamos el servicio.</p>
+<h3 id="point-3">POINT 3.</h3>
+<p>En la maquina <strong>LLIUREX</strong> haz el siguiente comando:</p>
+<blockquote>
+<p>mysql -h 10.2.24.174 -u diegoLectura -p tiendas_daw</p>
+</blockquote>
+<p>y accedemos a la <strong>BD</strong>:
+<img src="IMG/clienteEnBD.png" alt="alt text"></p>
+
+</body>
+</html>
