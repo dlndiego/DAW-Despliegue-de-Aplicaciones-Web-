@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>imagenPractica.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="ejercicio-imagenes-en-docker">Ejercicio Imagenes en Docker</h1>
+<p>Vamos a realizar 6 ejercicios en total:</p>
+<h2 id="ejercicio-1">Ejercicio 1</h2>
+<h6 id="enunciado">Enunciado:</h6>
+<p>Se tiene una carpeta html con una web estática (index.html) y se pide crear una
+imagen Docker con el servidor web Apache que muestre la web.
+Requisitos:
+● Imagen base: debian
+● Comandos para instalar Apache:
+○ apt-get update
+○ apt-get install -y apache2
+○ apt-get clean
+○ rm -rf /var/lib/apt/lists/*
+● Debe exponer el puerto 80
+● Comando para ejecutar Apache: /usr/sbin/apache2ctl -D FOREGROUND</p>
+<h6 id="respuesta">Respuesta:</h6>
+<p>Vamos a preparar la estructura de archivos:</p>
+<pre class="hljs"><code><div>diego@display:~$ <span class="hljs-built_in">cd</span> Documentos/
+diego@display:~/Documentos$ <span class="hljs-built_in">ls</span>
+diego@display:~/Documentos$ <span class="hljs-built_in">mkdir</span> ejercicio1
+diego@display:~/Documentos$ <span class="hljs-built_in">ls</span>
+ejercicio1
+diego@display:~/Documentos$ <span class="hljs-built_in">cd</span> ejercicio1
+diego@display:~/Documentos/ejercicio1$ <span class="hljs-built_in">sudo</span> nano Dockerfile
+diego@display:~/Documentos/ejercicio1$ <span class="hljs-built_in">cd</span> Dockerfile/
+diego@display:~/Documentos/ejercicio1$ <span class="hljs-built_in">mkdir</span> html
+diego@display:~/Documentos/ejercicio1$ <span class="hljs-built_in">cd</span> html
+diego@display:~/Documentos/ejercicio1/html$ <span class="hljs-built_in">sudo</span> nano index.html
+</div></code></pre>
+<p>Todo esto nos quedaria asi:</p>
+<pre class="hljs"><code><div>ejercicio1/
+├── Dockerfile
+└── html/
+    └── index.html
+</div></code></pre>
+<p>Y dentro del el archivo de Dockerfile ponemos lo siguiente:</p>
+<p><img src="img/DockerFile1.png" alt=""></p>
+<p>Una vez hecho todo esto tenemos que construir la imagen:</p>
+<pre class="hljs"><code><div>docker build -t apache-ejercicio1 .
+</div></code></pre>
+<p><img src="img/CreaImagen.png" alt=""></p>
+<p>Ahora ejecutamos el contenedor:</p>
+<pre class="hljs"><code><div>docker run -d -p 8080:80 --name web1 apache-ejercicio1
+</div></code></pre>
+<p><img src="img/CreaContenedor.png" alt=""></p>
+<p>Despues de todo tenemos que comprobar que ha funcionado:</p>
+<p><img src="img/ComprobacionEj1.png" alt=""></p>
+<h2 id="ejercicio-2">Ejercicio 2</h2>
+<h6 id="enunciado-1">Enunciado:</h6>
+<p>Repite el ejercicio 1 pero usando como imagen base la oficial de Apache.</p>
+<h6 id="respuesta-1">Respuesta:</h6>
+<p>Creamos otra vez la estructura:</p>
+<pre class="hljs"><code><div>ejercicio2/
+├── Dockerfile
+└── html/
+    └── index.html
+</div></code></pre>
+<p>Y hacemos el Dockerfile y el HTML</p>
+<pre class="hljs"><code><div>diego@display:~/Documentos$ <span class="hljs-built_in">mkdir</span> ejercicio2
+diego@display:~/Documentos$ <span class="hljs-built_in">mkdir</span> html
+diego@display:~/Documentos$ <span class="hljs-built_in">sudo</span> nano Dockerfile
+
+diego@display:~/Documentos$  <span class="hljs-built_in">cd</span> html
+diego@display:~/Documentos/html$ <span class="hljs-built_in">sudo</span> nano index.html
+diego@display:~/Documentos/html$ <span class="hljs-built_in">cat</span> index.html
+&lt;h1&gt;Ejercicio 2&lt;/h1&gt;
+&lt;p&gt;Hola! Todo OK!&lt;/p&gt;
+
+diego@display:~/Documentos/html$ <span class="hljs-built_in">cd</span> ..
+diego@display:~/Documentos$ <span class="hljs-built_in">cat</span> Dockerfile 
+FROM httpd
+
+COPY html/ /usr/local/apache2/htdocs/
+
+EXPOSE 80
+</div></code></pre>
+<p>Construimos la imagen:</p>
+<pre class="hljs"><code><div>docker build -t apache-ejercicio2 .
+</div></code></pre>
+<p><img src="img/CrearImagen2.png" alt=""></p>
+<p>Y construimos el contenedor:</p>
+<pre class="hljs"><code><div>docker run -d -p 8081:80 --name web2 apache-ejercicio2
+</div></code></pre>
+<p><img src="img/CrearContenedor2.png" alt=""></p>
+<p>Y veamos como funciona:
+<img src="img/Comprobacion2.png" alt=""></p>
+<h2 id="ejercicio-3">Ejercicio 3</h2>
+<h6 id="enunciado-2">Enunciado:</h6>
+<p>Repite el ejercicio 2 pero usando como imagen base la oficial de Nginx.</p>
+<h6 id="respuesta-2">Respuesta:</h6>
+<p>Tenemos que hacer esta estructura:</p>
+<pre class="hljs"><code><div>diego@display:~/Documentos$ <span class="hljs-built_in">mkdir</span> ejercicio3
+diego@display:~/Documentos$ <span class="hljs-built_in">cd</span> ejercicio3
+
+diego@display:~/Documentos/ejercicio3$ <span class="hljs-built_in">mkdir</span> html
+diego@display:~/Documentos/ejercicio3$ <span class="hljs-built_in">sudo</span> nano Dockerfile
+
+diego@display:~/Documentos/ejercicio3$ <span class="hljs-built_in">cd</span> html
+diego@display:~/Documentos/ejercicio3/html$ <span class="hljs-built_in">sudo</span> nano index.html
+
+diego@display:~/Documentos/ejercicio3/html$ <span class="hljs-built_in">cat</span> index.html 
+&lt;h1&gt;Ejercicio 3&lt;/h1&gt;
+&lt;p&gt;Hola! Todo OK!&lt;/p&gt;
+
+diego@display:~/Documentos/ejercicio3/html$ <span class="hljs-built_in">cd</span> ..
+diego@display:~/Documentos/ejercicio3$ <span class="hljs-built_in">cat</span> Dockerfile 
+FROM nginx
+
+COPY html/ /usr/share/nginx/html/
+
+EXPOSE 80
+
+</div></code></pre>
+<p>Ahora construimos la imagen:</p>
+<pre class="hljs"><code><div>docker build -t nginx-ejercicio3 .
+</div></code></pre>
+<p><img src="img/CrearImagen3.png" alt=""></p>
+<p>Ahora creamos/ejecutamos el contenedor:</p>
+<pre class="hljs"><code><div>docker run -d -p 8082:80 --name web3 nginx-ejercicio3
+</div></code></pre>
+<p><img src="img/CrearContenedor3.png" alt=""></p>
+<p>Comprobamos que funciona:</p>
+<p><img src="img/Comprobacion3.png" alt=""></p>
+<h2 id="ejercicio-4">Ejercicio 4</h2>
+<h6 id="enunciado-3">Enunciado:</h6>
+<p>Se tiene una carpeta app con una página web dinámica con php (index.php) y se
+pide crear una imagen Docker con el servidor web Apache y php que muestre la
+web.
+Requisitos:
+● Imagen base: debian
+● Comandos para instalar Apache:
+○ apt-get update
+○ apt-get install -y apache2 libapache2-mod-php7.3 php7.3
+○ apt-get clean
+○ rm -rf /var/lib/apt/lists/*
+○ rm /var/www/html/index.html
+● Debe exponer el puerto 80
+● Comando para ejecutar Apache: /usr/sbin/apache2ctl -D FOREGROUND</p>
+<p>Creamos la estructura de datos:</p>
+<pre class="hljs"><code><div>diego@display:~/Documentos$ <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mkdir</span> ejercicio4
+diego@display:~/Documentos$ <span class="hljs-built_in">cd</span> ejercicio4
+
+diego@display:~/Documentos/ejercicio4$ <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mkdir</span> app
+diego@display:~/Documentos/ejercicio4$ <span class="hljs-built_in">sudo</span> nano Dockerfile
+
+diego@display:~/Documentos/ejercicio4$ <span class="hljs-built_in">cd</span> app
+diego@display:~/Documentos/ejercicio4/app$ <span class="hljs-built_in">sudo</span> nano index.php
+
+diego@display:~/Documentos/ejercicio4/app$ <span class="hljs-built_in">cat</span> index.php 
+&lt;?php <span class="hljs-built_in">echo</span> phpinfo(); ?&gt;
+
+diego@display:~/Documentos/ejercicio4/app$ <span class="hljs-built_in">cd</span> ..
+diego@display:~/Documentos/ejercicio4$ <span class="hljs-built_in">cat</span> Dockerfile 
+FROM debian
+
+RUN apt-get update &amp;&amp; \
+    apt-get install -y apache2 libapache2-mod-php php &amp;&amp; \
+    apt-get clean &amp;&amp; \
+    <span class="hljs-built_in">rm</span> -rf /var/lib/apt/lists/* &amp;&amp; \
+    <span class="hljs-built_in">rm</span> /var/www/html/index.html
+
+COPY app/ /var/www/html/
+
+EXPOSE 80
+
+CMD [<span class="hljs-string">&quot;/usr/sbin/apache2ctl&quot;</span>, <span class="hljs-string">&quot;-D&quot;</span>, <span class="hljs-string">&quot;FOREGROUND&quot;</span>]
+
+</div></code></pre>
+<p>Construir la imagen:</p>
+<pre class="hljs"><code><div>docker build -t apache-php-ejercicio4 .
+</div></code></pre>
+<p><img src="img/Crearimagen4.png" alt=""></p>
+<p>Construir el contenedor:</p>
+<pre class="hljs"><code><div>docker run -d -p 8083:80 --name web4 apache-php-ejercicio4
+</div></code></pre>
+<p><img src="img/CrearContenedor4.png" alt=""></p>
+<p>Y ahora comprobamos como funciona:
+<img src="img/Comprobacion4.png" alt=""></p>
+<h2 id="ejercicio-5">Ejercicio 5</h2>
+<h6 id="enunciado-4">Enunciado:</h6>
+<p>Repite el ejercicio 4 pero usando como imagen base php:apache, que es una imagen de oficial de PHP con Apache ya instalado.</p>
+<h6 id="respuesta-3">Respuesta:</h6>
+<p>Creamos la estructura de datos:</p>
+<pre class="hljs"><code><div>diego@display:~/Documentos$ <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mkdir</span> ejercicio5
+diego@display:~/Documentos$ <span class="hljs-built_in">cd</span> ejercicio5
+
+diego@display:~/Documentos/ejercicio5$ <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">mkdir</span> app
+diego@display:~/Documentos/ejercicio5$ <span class="hljs-built_in">sudo</span> nano Dockerfile
+
+diego@display:~/Documentos/ejercicio5$ <span class="hljs-built_in">cd</span> app/
+diego@display:~/Documentos/ejercicio5/app$ <span class="hljs-built_in">sudo</span> nano index.php
+
+diego@display:~/Documentos/ejercicio5/app$ <span class="hljs-built_in">cat</span> index.php 
+&lt;?php <span class="hljs-built_in">echo</span> phpinfo(); ?&gt;
+
+diego@display:~/Documentos/ejercicio5/app$ <span class="hljs-built_in">cd</span> ..
+
+diego@display:~/Documentos/ejercicio5$ <span class="hljs-built_in">cat</span> Dockerfile 
+FROM php:apache
+
+COPY app/ /var/www/html/
+
+EXPOSE 80
+</div></code></pre>
+<p>Construimos la imagen:</p>
+<pre class="hljs"><code><div>docker build -t php-apache-ejercicio5 .
+</div></code></pre>
+<p><img src="img/Crearimagen5.png" alt=""></p>
+<p>Construimos el contenedor:</p>
+<pre class="hljs"><code><div>docker run -d -p 8084:80 --name web5 php-apache-ejercicio5
+</div></code></pre>
+<p><img src="img/CrearContenedor5.png" alt=""></p>
+<p>Y ahora comprobamos que funciona:
+<img src="img/Comprobacion5.png" alt=""></p>
+<h2 id="ejercicio-6">Ejercicio 6</h2>
+<h6 id="enunciado-5">Enunciado:</h6>
+<p>Crea una cuenta el Docker Hub, creo una imagen y súbela.
+Puede utilizar una imagen de las creadas en el los ejercicios anteriores.
+Recuerda que la primera parte del nombre de la imagen tiene que coincidir con el
+numbre de usuario de Docker Hub.
+Luego borra la imagen local y usa docker run para que se la descargue del
+repositorio, cree un contenedor y lo ejecute.
+Documenta el proceso con explicaciones y capturas de pantalla.</p>
+<h6 id="respuesta-4">Respuesta:</h6>
+<p>Creamos la cuenta en <strong>Docker Hub</strong>:
+<img src="img/CuentaDockerHub.png" alt=""></p>
+<p>Ahora iniciamos sesion desde el terminal:</p>
+<pre class="hljs"><code><div>docker login
+</div></code></pre>
+<p><img src="img/SesionEnTerminal.png" alt=""></p>
+<p>Le ponemos un <strong>TAG</strong> a una imagen existente:</p>
+<pre class="hljs"><code><div>docker tag apache-ejercicio2 dlndiego/apache-ejercicio2:v1
+</div></code></pre>
+<p><img src="img/TagImagenExistente.png" alt=""></p>
+<p>Tnemos que hacer el <strong>push</strong> a la image: de esta manera:
+<img src="img/PushImagen.png" alt=""></p>
+<p>y si accedemos a nuestro perfil vemos como se ha subido la imagen:
+<img src="img/ComprobarPush.png" alt=""></p>
+<p>Ahora borramos el contenedor local:</p>
+<pre class="hljs"><code><div>docker ps -a
+docker stop web2
+docker <span class="hljs-built_in">rm</span> web2
+</div></code></pre>
+<p>y ahora las imagenes</p>
+<pre class="hljs"><code><div>diego@display:~/Documentos/ejercicio5$ <span class="hljs-built_in">sudo</span> docker rmi dlndiego/apache-ejercicio2:v1
+Untagged: dlndiego/apache-ejercicio2:v1
+Deleted: sha256:e7c0d1de69d538ad9fe3c36cae0bfef791eea139701d596b1da5cff824167384
+diego@display:~/Documentos/ejercicio5$ <span class="hljs-built_in">sudo</span> docker rmi apache-ejercicio2
+Error response from daemon: No such image: apache-ejercicio2:latest
+</div></code></pre>
+<p>y comprobamos que no estan con el docker images:</p>
+<p><img src="img/DockerImagesCOmprobacion.png" alt=""></p>
+<p>y ahora la ejecutamos desde <strong>DOCKER HUB</strong>:
+<img src="img/DescargaDesdeNube.png" alt=""></p>
+<p>Y comprobamos que funciona:</p>
+<p><img src="img/Comprobacion7.png" alt=""></p>
+
+</body>
+</html>
