@@ -47,4 +47,57 @@ Fase 3. HTTPS y redirecciones
 `RESPUESTA:`
 
 Despues de activar y configurar todo el `https`:
-![](IMG/FASE3COMPROBACION1.png)
+![](IMG/FASE3-1COMPR.png.png)
+
+Y comprobandolo desde el navegador aparece: 
+![](IMG/FASE3-pagCompr.png)
+
+
+## FASE 4
+
+`ENUNCIADO:`
+
+Fase 4. Control de acceso y seguridad
+1. Proteger la intranet con autenticación básica (AuthType Basic) y fichero .htpasswd fuera del DocumentRoot, con 3 usuarios distintos.
+2. Restringir una subcarpeta intranet/admin solo a un usuario concreto y, además, a la red del laboratorio.
+3. Desactivar el listado de directorios (Options -Indexes) en todo el servidor y permitirlo solo en intranet/documentos.
+4. Bloquear el acceso al fichero .htaccess
+
+`RESPUESTA:`
+
+Al iniciar la pagina salta el usuario: 
+![](IMG/FASE4-COMPRUSU.png)
+
+Si pones el usuario sale lo siguiente: 
+![](IMG/FASE4-ENTRADA%20USU.png)
+
+Si pones un usuario que no esta verificado no accedes.
+
+## FASE 5
+
+`ENUNCIADO:`
+
+Fase 5. Rendimiento, URL y registros
+1. Comprimir HTML, CSS y JS con mod_deflate. Investiga
+2. Caché del navegador con mod_expires (imágenes y CSS: 30 días; HTML: sin caché larga). Investiga
+3. URL amigables con mod_rewrite en .htaccess: /productos debe servir productos.html sin mostrar la extensión.
+4. Páginas de error personalizadas 403, 404 y 500, con el estilo de la web.
+
+`RESPUESTA:`
+
+Al hacer todos los pasos de la conf del htacces y del archivo de rendimiento, etc...
+Podremos acceder sin poner el `.html`.
+![](IMG/FASE5-SINHTML.png)
+
+Si accedes a una pagina que debe saltar un error nos damos cuenta que pilla bien las paginas de error.
+![](IMG/fase5-pagError.png)
+
+Pagina no encontrada
+![](IMG/404.png)
+
+## FASE 6
+
+> [!NOTE]
+>
+> Por lo tengo entendido es una prueba de que todo funciona asi que para eso tienes el ZIP, (TRABAJA)...
+
